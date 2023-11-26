@@ -274,8 +274,11 @@ function endsWith(str, substr) {
  *   formatTime(0, 45) => "00:45"
  *   formatTime(0, 0) => "00:00"
  */
-function formatTime(/* minutes, seconds */) {
-  throw new Error('Not implemented');
+function formatTime(minutes, seconds) {
+  // throw new Error('Not implemented');
+  const minuts = `${minutes}`;
+  const second = `${seconds}`;
+  return `${minuts.padStart(2, '0')}:${second.padStart(2, '0')}`;
 }
 
 /**
@@ -288,8 +291,10 @@ function formatTime(/* minutes, seconds */) {
  *   reverseString('abcdef') => 'fedcba'
  *   reverseString('12345') => '54321'
  */
-function reverseString(/* str */) {
-  throw new Error('Not implemented');
+function reverseString(str) {
+  // throw new Error('Not implemented');
+  const result = str.split('').reverse('').join('');
+  return result;
 }
 
 /**
@@ -303,8 +308,10 @@ function reverseString(/* str */) {
  *   orderAlphabetically('textbook') => 'bekoottx'
  *   orderAlphabetically('abc123xyz') => '123abcxyz'
  */
-function orderAlphabetically(/* str */) {
-  throw new Error('Not implemented');
+function orderAlphabetically(str) {
+  // throw new Error('Not implemented');
+  const result = str.split('').sort().join('');
+  return result;
 }
 
 /**
@@ -319,8 +326,9 @@ function orderAlphabetically(/* str */) {
  *   containsSubstring('JavaScript is Fun', 'Python') => false
  *   containsSubstring('12345', '34') => true
  */
-function containsSubstring(/* str, substring */) {
-  throw new Error('Not implemented');
+function containsSubstring(str, substring) {
+  // throw new Error('Not implemented');
+  return str.includes(substring);
 }
 
 /**
@@ -337,8 +345,18 @@ function containsSubstring(/* str, substring */) {
  *   countVowels('aEiOu') => 5
  *   countVowels('XYZ') => 1
  */
-function countVowels(/* str */) {
-  throw new Error('Not implemented');
+function countVowels(str) {
+  // throw new Error('Not implemented');
+  let count = 0;
+  const vowels = ['a', 'e', 'i', 'o', 'u', 'y', 'A', 'E', 'I', 'O', 'U', 'Y'];
+  for (let i = 0; i < str.length; i += 1) {
+    for (let j = 0; j < vowels.length; j += 1) {
+      if (str[i] === vowels[j]) {
+        count += 1;
+      }
+    }
+  }
+  return count;
 }
 
 /**
@@ -354,8 +372,16 @@ function countVowels(/* str */) {
  *   isPalindrome('apple') => false
  *   isPalindrome('No lemon, no melon') => true
  */
-function isPalindrome(/* str */) {
-  throw new Error('Not implemented');
+function isPalindrome(str) {
+  // throw new Error('Not implemented');
+  const str2 = str
+    .toLowerCase()
+    .replace(/[^a-z0-9]/g, '')
+    .split('')
+    .reverse()
+    .join('');
+  console.log(str2);
+  return str.toLowerCase().replace(/[^a-z0-9]/g, '') === str2;
 }
 
 /**
@@ -370,8 +396,16 @@ function isPalindrome(/* str */) {
  *   findLongestWord('A long and winding road') => 'winding'
  *   findLongestWord('No words here') => 'words'
  */
-function findLongestWord(/* sentence */) {
-  throw new Error('Not implemented');
+function findLongestWord(sentence) {
+  // throw new Error('Not implemented');
+  const arr = sentence.split(' ');
+  let result = '';
+  for (let i = 0; i < arr.length; i += 1) {
+    if (arr[i].length > result.length) {
+      result = arr[i];
+    }
+  }
+  return result;
 }
 
 /**
@@ -384,8 +418,23 @@ function findLongestWord(/* sentence */) {
  *   reverseWords('Hello World') => 'olleH dlroW'
  *   reverseWords('The Quick Brown Fox') => 'ehT kciuQ nworB xoF'
  */
-function reverseWords(/* str */) {
-  throw new Error('Not implemented');
+function reverseWords(str) {
+  // throw new Error('Not implemented');
+  const arr = str.split(' ');
+  const arr2 = arr.map((item) => {
+    return item.split('');
+  });
+  arr2.forEach((item) => {
+    item.reverse();
+  });
+  let result = '';
+  for (let i = 0; i < arr2.length; i += 1) {
+    result += ' ';
+    for (let j = 0; j < arr2[i].length; j += 1) {
+      result += arr2[i][j];
+    }
+  }
+  return result.trimStart();
 }
 
 /**
@@ -399,8 +448,17 @@ function reverseWords(/* str */) {
  *   invertCase('JavaScript is Fun') => 'jAVAsCRIPT IS fUN'
  *   invertCase('12345') => '12345'
  */
-function invertCase(/* str */) {
-  throw new Error('Not implemented');
+function invertCase(str) {
+  // throw new Error('Not implemented');
+  let result = '';
+  for (let i = 0; i < str.length; i += 1) {
+    if (str[i] === str[i].toLowerCase()) {
+      result += str[i].toUpperCase();
+    } else {
+      result += str[i].toLowerCase();
+    }
+  }
+  return result;
 }
 
 /**
@@ -416,8 +474,9 @@ function invertCase(/* str */) {
  *   getStringFromTemplate('John','Doe') => 'Hello, John Doe!'
  *   getStringFromTemplate('Chuck','Norris') => 'Hello, Chuck Norris!'
  */
-function getStringFromTemplate(/* firstName, lastName */) {
-  throw new Error('Not implemented');
+function getStringFromTemplate(firstName, lastName) {
+  // throw new Error('Not implemented');
+  return `Hello, ${firstName} ${lastName}!`;
 }
 
 /**
@@ -430,8 +489,12 @@ function getStringFromTemplate(/* firstName, lastName */) {
  *   extractNameFromTemplate('Hello, John Doe!') => 'John Doe'
  *   extractNameFromTemplate('Hello, Chuck Norris!') => 'Chuck Norris'
  */
-function extractNameFromTemplate(/* value */) {
-  throw new Error('Not implemented');
+function extractNameFromTemplate(value) {
+  // throw new Error('Not implemented');
+  const arr = value.split(' ');
+  const firstName = arr[1];
+  const lastName = arr[2].slice(0, arr[2].length - 1);
+  return `${firstName} ${lastName}`;
 }
 
 /**
@@ -445,8 +508,9 @@ function extractNameFromTemplate(/* value */) {
  *   unbracketTag('<span>') => 'span'
  *   unbracketTag('<a>') => 'a'
  */
-function unbracketTag(/* str */) {
-  throw new Error('Not implemented');
+function unbracketTag(str) {
+  // throw new Error('Not implemented');
+  return str.slice(1, str.length - 1);
 }
 
 /**
@@ -466,6 +530,8 @@ function unbracketTag(/* str */) {
  */
 function extractEmails(/* str */) {
   throw new Error('Not implemented');
+  // const arr = str.split('.');
+  // return `${arr[1]}.${arr[2]}`;
 }
 
 /**
@@ -484,8 +550,18 @@ function extractEmails(/* str */) {
  *    => 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm'
  *
  */
-function encodeToRot13(/* str */) {
-  throw new Error('Not implemented');
+function encodeToRot13(str) {
+  // throw new Error('Not implemented');
+  const alpabetDefault =
+    'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ?!';
+  const rot13 = 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm ?!';
+  let result = '';
+  for (let i = 0; i < str.length; i += 1) {
+    const index = alpabetDefault.indexOf(str[i]);
+    result += rot13[index];
+  }
+
+  return result;
 }
 
 /**
