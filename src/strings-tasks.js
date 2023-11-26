@@ -380,7 +380,6 @@ function isPalindrome(str) {
     .split('')
     .reverse()
     .join('');
-  console.log(str2);
   return str.toLowerCase().replace(/[^a-z0-9]/g, '') === str2;
 }
 
